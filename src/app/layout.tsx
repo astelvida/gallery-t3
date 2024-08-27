@@ -1,12 +1,5 @@
 import "~/styles/globals.css";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
-import { GeistSans } from "geist/font/sans";
+import { ClerkProvider } from "@clerk/nextjs";
 import { type Metadata } from "next";
 import TopNav from "./_components/TopNav";
 import "@uploadthing/react/styles.css";
@@ -25,7 +18,8 @@ export const inter = Inter({
 // flex min-h-screen flex-col bg-black text-white
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  modal,
+}: Readonly<{ children: React.ReactNode; modal: React.ReactNode }>) {
   return (
     <ClerkProvider>
       <html lang="en">
@@ -33,7 +27,9 @@ export default function RootLayout({
           className={`font-sans ${inter.variable} flex flex-col gap-4 bg-black text-white`}
         >
           <TopNav />
+          {modal}
           {children}
+          <div id="modal-root"></div>
         </body>
       </html>
     </ClerkProvider>
