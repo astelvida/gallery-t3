@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export const inter = Inter({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
 });
